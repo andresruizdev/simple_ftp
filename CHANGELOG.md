@@ -1,3 +1,8 @@
+## 0.0.5 - FTP Commands Support.
+
+* Add Server Listener to listen to client commands.
+* Add Commands Interpreter.
+
 ## 0.0.4 - Server Support.
 
 * Add Welcome Message.
