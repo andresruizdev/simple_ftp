@@ -2,6 +2,9 @@
 
 * Add Server Listener to listen to client commands.
 * Add Commands Interpreter.
+* Add Welcome Message.
+* Add Username Support.
+* Add Password Support.
 
 ## 0.0.4 - Server Support.
 

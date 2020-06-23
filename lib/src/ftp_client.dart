@@ -37,8 +37,34 @@ class FtpClient{
 
     if(response == null){
       //TODO: Commands switch
+      switch(cmd.trim()){
+        case "USER":
+          response = _setUsername(arguments);
+          break;
+        case "PASS":
+          response = _setPassword(arguments);
+          break;
+        default:
+          print("502 $cmd");
+          response = "502 Command not implemented";
+          break;
+      }
     }
 
     // TODO: send response to client
+  }
+
+  String _setUsername(String username){
+    _username = username;
+    print("Username Setted: $username");
+    return "331 Username ok, need password";
+  }
+
+  String _setPassword(String password){
+    if(true){
+      return "230 User logged in";
+    }else{
+      return "530 Not logged in";
+    }
   }
 }
