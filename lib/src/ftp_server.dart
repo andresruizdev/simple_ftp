@@ -1,35 +1,40 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:simple_ftp/src/ftp_client.dart';
+
 class FtpServer{
   String _ipAddress;
   int _port;
   ServerSocket _serverSocket;
-  Socket _socket;
+  List<FtpClient> clients = [];
 
   FtpServer(){
-    _ipAddress = "0.0.0.0";;
+    _ipAddress = '0.0.0.0';
     _port = 21;
 
-    // TODO: Start Server
+    start();
   }
 
   FtpServer.createServer(ipAddress, port){
     this._ipAddress = ipAddress;
     this._port = port;
 
-    // TODO: Start Server
+    start();
   }
 
   start() async {
-    _serverSocket = await createServerSocket();
-    _serverSocket.listen((Socket socket) => _serverListener(socket));
-  }
-
-  Future<ServerSocket> createServerSocket() async {
-    Future<ServerSocket> _server = ServerSocket.bind(_ipAddress, _port);
-    _server.then((ServerSocket server) {
-      return _server;
+    Future<ServerSocket> serverFuture = ServerSocket.bind(_ipAddress, _port);
+    serverFuture.then((ServerSocket server) {
+      _serverSocket = server;
+      print("Created Server Socket");
+      server.listen((Socket socket) async {
+        await Future.delayed(Duration(seconds: 1));
+        clients.add(FtpClient(socket));
+        /*socket.writeln("Flutter FTP Server");
+        socket.flush();*/
+        
+      });
     });
   }
 
@@ -38,17 +43,5 @@ class FtpServer{
       _serverSocket.close();
     }
   }
-
-  _serverListener(Socket socket){
-    _socket = socket;
-    _socket.listen((List<int> data) => _dataReceiver(data));
-
-  }
-
-  _dataReceiver(List<int> data){
-    String result = new String.fromCharCodes(data);
-    print(result.toString());
-  }
-
 
 }
