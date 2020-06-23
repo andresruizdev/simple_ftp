@@ -50,6 +50,13 @@ class FtpClient{
         case "CDUP":
           response = _changeWorkingDirectory("..");
           break;
+        case "QUIT":
+        response = "221 Service closing control connection";
+        break;
+        case "TYPE":
+          List<String> splitArgs = arguments.split(' ');
+          response = _type(splitArgs[0], splitArgs.length > 1 ? splitArgs[1] : null);
+          break;
         default:
           print("502 $cmd");
           response = "502 Command not implemented";
@@ -77,6 +84,42 @@ class FtpClient{
   String _changeWorkingDirectory(String pathName){
     // TODO: Complete the method.
     return "250 Changed to new directory";
+  }
+
+  String _type(String typeCode, String formatControl)
+  {
+    String response = "";
+
+    switch (typeCode.trim())
+    {
+        case "A":
+        case "I":
+          _transferType = typeCode;
+          response = "200 OK";
+          break;
+        case "E":
+        case "L":
+        default:
+            response = "504 Command not implemented for that parameter.";
+            break;
+    }
+
+    if (formatControl != null)
+    {
+        switch (formatControl)
+        {
+            case "N":
+                response = "200 OK";
+                break;
+            case "T":
+            case "C":
+            default:
+                response = "504 Command not implemented for that parameter.";
+                break;
+        }
+    }
+
+    return response;
   }
 
 

@@ -1,6 +1,9 @@
 ## 0.0.6 - FTP Commands Support.
 
 * Add Change Directory Feature.
+* Add Quit Feature.
+* Add Type Command.
+
 
 ## 0.0.5 - FTP Commands Support.
 
