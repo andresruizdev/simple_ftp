@@ -1,3 +1,7 @@
+## 0.0.4 - Server Support.
+
+* Add Welcome Message.
+
 ## 0.0.3 - Server Support.
 
 * Start Server.

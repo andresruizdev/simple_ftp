@@ -94,7 +94,7 @@ packages:
       name: simple_ftp
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.4"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -7,6 +7,6 @@ class SimpleFTP{
   FtpServer _ftpServer;
 
   SimpleFTP(){
-    _ftpServer = new FtpServer();
+    _ftpServer = new FtpServer.createServer('0.0.0.0', 21);
   }
 }
