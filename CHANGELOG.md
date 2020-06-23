@@ -1,3 +1,7 @@
+## 0.0.6 - FTP Commands Support.
+
+* Add Change Directory Feature.
+
 ## 0.0.5 - FTP Commands Support.
 
 * Add Server Listener to listen to client commands.

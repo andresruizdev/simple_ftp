@@ -44,6 +44,12 @@ class FtpClient{
         case "PASS":
           response = _setPassword(arguments);
           break;
+        case "CWD":
+          response = _changeWorkingDirectory(arguments);
+          break;
+        case "CDUP":
+          response = _changeWorkingDirectory("..");
+          break;
         default:
           print("502 $cmd");
           response = "502 Command not implemented";
@@ -67,4 +73,11 @@ class FtpClient{
       return "530 Not logged in";
     }
   }
+
+  String _changeWorkingDirectory(String pathName){
+    // TODO: Complete the method.
+    return "250 Changed to new directory";
+  }
+
+
 }
