@@ -11,14 +11,14 @@ class FtpServer{
     _ipAddress = "0.0.0.0";;
     _port = 21;
 
-    // TODO: Start Server
+    start();
   }
 
   FtpServer.createServer(ipAddress, port){
     this._ipAddress = ipAddress;
     this._port = port;
 
-    // TODO: Start Server
+    start();
   }
 
   start() async {
@@ -29,6 +29,7 @@ class FtpServer{
   Future<ServerSocket> createServerSocket() async {
     Future<ServerSocket> _server = ServerSocket.bind(_ipAddress, _port);
     _server.then((ServerSocket server) {
+      //_serverSocket = server;
       return _server;
     });
   }
@@ -41,6 +42,7 @@ class FtpServer{
 
   _serverListener(Socket socket){
     _socket = socket;
+    _socket.write("Flutter FTP Server Plugin");
     _socket.listen((List<int> data) => _dataReceiver(data));
 
   }

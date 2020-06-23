@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:simple_ftp/simple_ftp.dart';
 
 void main() {
+  SimpleFTP simpleFtp = new SimpleFTP();
   runApp(MyApp());
 }
 
@@ -9,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'FTP Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -26,13 +28,13 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: FTPDemo(title: 'Flutter FTP Demo'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class FTPDemo extends StatefulWidget {
+  FTPDemo({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -46,10 +48,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _FTPDemoState createState() => _FTPDemoState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _FTPDemoState extends State<FTPDemo> {
   int _counter = 0;
 
   void _incrementCounter() {

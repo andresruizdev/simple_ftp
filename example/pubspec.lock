@@ -88,6 +88,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  simple_ftp:
+    dependency: "direct main"
+    description:
+      name: simple_ftp
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   sky_engine:
     dependency: transitive
     description: flutter
