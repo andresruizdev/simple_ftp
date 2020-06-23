@@ -23,7 +23,7 @@ class FtpServer{
 
   start() async {
     _serverSocket = await createServerSocket();
-    _serverSocket.listen((Socket socket) { })
+    _serverSocket.listen((Socket socket) => _serverListener(socket));
   }
 
   Future<ServerSocket> createServerSocket() async {
@@ -39,16 +39,16 @@ class FtpServer{
     }
   }
 
-  /*_serverListener(Socket socket){
+  _serverListener(Socket socket){
     _socket = socket;
-    _socket.listen(()
+    _socket.listen((List<int> data) => _dataReceiver(data));
 
   }
 
   _dataReceiver(List<int> data){
     String result = new String.fromCharCodes(data);
     print(result.toString());
-  }*/
+  }
 
 
 }
