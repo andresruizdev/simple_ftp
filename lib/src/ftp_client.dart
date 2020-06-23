@@ -57,6 +57,9 @@ class FtpClient{
           List<String> splitArgs = arguments.split(' ');
           response = _type(splitArgs[0], splitArgs.length > 1 ? splitArgs[1] : null);
           break;
+        case "PORT":
+        response = _portPas(arguments);
+        break;
         default:
           print("502 $cmd");
           response = "502 Command not implemented";
@@ -64,7 +67,20 @@ class FtpClient{
       }
     }
 
-    // TODO: send response to client
+    _socket.writeln(response);
+    _socket.flush();
+  }
+
+  String _portPas(String hostPoint){
+    List<String> ipAndPort = hostPoint.split(',');
+    List<int> ipAddress = ipAndPort.take(4).toString().codeUnits;
+    List<int> port = ipAndPort.skip(4).toString().codeUnits;
+
+    print("Code Units: ${ipAddress.toString()} & ${port.toString()}");
+
+    print(port.reversed.toString());
+    //if()
+    return "200 OK";
   }
 
   String _setUsername(String username){
