@@ -1,12 +1,9 @@
+/// Support for doing something awesome.
+///
+/// More dartdocs go here.
 library simple_ftp;
 
-import 'package:simple_ftp/src/ftp_server.dart';
-export 'package:simple_ftp/simple_ftp.dart';
-/// A Calculator.
-class SimpleFTP{
-  FtpServer _ftpServer;
+export 'src/client.dart';
+export 'src/server.dart';
 
-  SimpleFTP(){
-    _ftpServer = new FtpServer.createServer('0.0.0.0', 21);
-  }
-}
+// TODO: Export any libraries intended for clients of this package.
